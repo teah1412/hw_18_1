@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Homepage{% endblock title %}
+
+{% block content %}
+
+{% if user and user.secret_number %}
+    <h1>Guess the number</h1>
+
+    <form method="post" action="/result">
+        <input type="text" name="guess" placeholder="Enter your guess">
+        <br>
+
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+
+{% else %}
+    <h1>Add your user data to start the game!</h1>
+
+    <form method="post" action="/addnew">
+        <input type="text" name="name" placeholder="Enter your name">
+        <br>
+        <input type="email" name="email" placeholder="Enter your email address">
+        <br>
+
+        <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
+{% endif %}
+
+{% endblock content %}
